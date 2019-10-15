@@ -1,0 +1,76 @@
+<meta charset="utf-8">
+
+<script>
+    function Mathop(a, b, op) {
+        var res;
+        if (op == '+') {
+            res = a + b;
+        } else if (op == '-') {
+            res = a - b;
+        } else if (op == '*') {
+            res = a * b;
+        } else if (op == '/') {
+            res = a / b;
+        } else {
+            res = false;
+        }
+
+        return res;
+    }
+
+    /*console.log(Mathop(10, 3, '+'));
+    console.log(Mathop(10, 3, '-'));
+    console.log(Mathop(10, 3, '*'));
+    console.log(Mathop(10, 3, '/'));*/
+
+
+
+    function codeToOp(num) {
+
+        var res;
+        if (num == 0) {
+            res = '+';
+        } else if (num == 2) {
+            res = '-';
+        } else if (num == 3) {
+            res = '*';
+        } else if (num == 1) {
+            res = '/';
+        } else {
+            res = '';
+        }
+        return res;
+    }
+
+    function randomInt(min, max) {
+        var length = max - min + 1;
+        var rand = Math.floor(Math.random() * length) + min;
+        return rand;
+    }
+    var x, y, res, code, answer, answerStr;
+
+    for (i = 0; i < 10; i++) {
+        x = randomInt(3, 15);
+        y = randomInt(3, 15); /* получение случайных чисел от 3 до 15 включительно (по умолчанию только от 0 до 1)*/
+        code = randomInt(0, 3);
+
+        op = codeToOp(code);
+        res = Mathop(x, y, op);
+        do {
+            answerStr = prompt(x + '' + op + '' + y + '=?');
+            answer = +answerStr;
+        }
+        while (answerStr == '' || isNaN(answer));
+
+        if (res.toFixed(2) == answer.toFixed(2)) {
+            alert('молодец');
+        } else {
+            alert('Балбес' + x + '' + op + '' + y + '=' + res.toFixed(2));
+
+        }
+
+    }
+
+
+    console.log(res);
+</script>
