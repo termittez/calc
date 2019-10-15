@@ -1,0 +1,19 @@
+<script>
+    function randomInt(min, max) {
+        var length = max - min + 1;
+        var rand = Math.floor(Math.random() * length) + min;
+        return rand;
+    }
+    var x, y, res, code, op;
+    var variants = ['+', '-', '*', '/'];
+
+
+    code = randomInt(0, 3);
+
+    op = variants[code];
+
+
+
+
+    console.log(op);
+</script>
